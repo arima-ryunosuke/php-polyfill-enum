@@ -38,7 +38,12 @@
   },
   "scripts": {
     "build": [
-      "@test"
+      "@test",
+      "@demo"
+    ],
+    "demo": [
+      "diff -y -W 180 <(demo/php80-polyfill.php) <(demo/php81-builtin.php) || true",
+      "diff -y -W 180 <(demo/php80-polyfill.php) <(demo/php81-polyfill.php) || true"
     ],
     "test": [
       "php81 -d zend.assertions=1 vendor/bin/phpunit --configuration=tests/phpunit.xml"
