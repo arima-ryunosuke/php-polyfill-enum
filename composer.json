@@ -1,0 +1,20 @@
+{
+  "config": {
+    "platform": {
+      "php": "7.4"
+    }
+  },
+  "name": "ryunosuke/polyfill-enum",
+  "type": "library",
+  "description": "Emulate php8.1's enum",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "ryunosuke",
+      "email": "ryunosuke.arima@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.4"
+  }
+}
