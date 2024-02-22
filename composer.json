@@ -16,5 +16,13 @@
   ],
   "require": {
     "php": ">=7.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "ryunosuke\\polyfill\\enum\\": "src/polyfill/enum"
+    },
+    "files": [
+      "bootstrap.php"
+    ]
   }
 }
