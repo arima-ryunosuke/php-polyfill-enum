@@ -42,18 +42,27 @@ if (!function_exists('ReflectionClassConstant_isEnumCase')) {
 
 // autoload for Initializable::__autoload
 (function () {
-    spl_autoload_register($self = function (string $class) use (&$self) {
-        foreach (spl_autoload_functions() as $loader) {
-            if ($loader !== $self) {
-                $loader($class);
-                if (class_exists($class, false) && method_exists($class, '__autoload')) {
-                    $methodFile = (new ReflectionMethod($class, '__autoload'))->getFileName();
-                    $traitFile  = (new ReflectionClass(\ryunosuke\polyfill\enum\traits\Initializable::class))->getFileName();
-                    if ($methodFile === $traitFile) {
-                        $class::__autoload();
+    $loading = false;
+    spl_autoload_register($self = function (string $class) use (&$self, &$loading) {
+        // recursion prevention. other spl_autoload_function may call spl_autoload_functions
+        if (!$loading) {
+            $loading = true;
+            foreach (spl_autoload_functions() as $loader) {
+                if ($loader !== $self) {
+                    $loader($class);
+                    if (class_exists($class, false)) {
+                        break;
                     }
-                    break;
                 }
+            }
+            $loading = false;
+        }
+
+        if (class_exists($class, false) && method_exists($class, '__autoload')) {
+            $methodFile = (new ReflectionMethod($class, '__autoload'))->getFileName();
+            $traitFile  = (new ReflectionClass(\ryunosuke\polyfill\enum\traits\Initializable::class))->getFileName();
+            if ($methodFile === $traitFile) {
+                $class::__autoload();
             }
         }
     }, true, true);
