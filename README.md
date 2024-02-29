@@ -199,6 +199,10 @@ Versioning follows semantic versioning.
   - minor: add feature (no BC break)
   - patch: fix bug (no BC break)
 
+### 1.0.1
+
+- [fixbug] オートローダが無限ループする不具合を修正
+
 ### 1.0.0
 
 - publish
