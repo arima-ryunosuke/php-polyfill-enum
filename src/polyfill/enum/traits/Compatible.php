@@ -7,7 +7,7 @@ use ryunosuke\polyfill\enum\reflections\ReflectionEnum;
 
 trait Compatible
 {
-    final public static function assert()
+    final public static function assert(): void
     {
         // do assertion mode only
         assert((function () {
@@ -57,7 +57,7 @@ trait Compatible
         })());
     }
 
-    final public static function redefine()
+    final public static function redefine(): void
     {
         if (version_compare(PHP_VERSION, 8.1) < 0 && function_exists('uopz_redefine')) {
             foreach ((new ReflectionEnum(static::class))->getCases() as $refcase) {

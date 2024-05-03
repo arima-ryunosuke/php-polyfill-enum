@@ -8,13 +8,13 @@ trait Enumable
 {
     use Methodable;
 
-    public function __isset($name)
+    public function __isset(string $name): bool
     {
         // Practically only name and value (because enums cannot have properties)
         return property_exists($this, $name);
     }
 
-    public function __get($name)
+    public function __get(string $name)
     {
         if (isset($this->$name)) {
             return $this->$name;

@@ -3,7 +3,7 @@ namespace ryunosuke\polyfill\enum\traits;
 
 trait Initializable
 {
-    public static function __autoload()
+    public static function __autoload(): void
     {
         static $autoloaded = false;
         if (!$autoloaded) {

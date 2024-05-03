@@ -5,8 +5,7 @@ use ReflectionException;
 
 class ReflectionEnumBackedCase extends ReflectionEnumUnitCase
 {
-    /** @param object|string $class */
-    public function __construct($class, string $constant)
+    public function __construct(object|string $class, string $constant)
     {
         parent::__construct($class, $constant);
 
@@ -15,9 +14,7 @@ class ReflectionEnumBackedCase extends ReflectionEnumUnitCase
         }
     }
 
-    /** @return int|string */
-    #[\ReturnTypeWillChange]
-    public function getBackingValue()
+    public function getBackingValue(): int|string
     {
         $const = $this->getDeclaringClass()->getConstant($this->name);
 

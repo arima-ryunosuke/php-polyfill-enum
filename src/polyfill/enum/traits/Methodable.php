@@ -6,7 +6,7 @@ namespace ryunosuke\polyfill\enum\traits;
 
 trait Methodable
 {
-    public static function __callStatic($name, $arguments)
+    public static function __callStatic(string $name, mixed $arguments): mixed
     {
         foreach (static::cases() as $case) {
             if ($name === $case->name) {

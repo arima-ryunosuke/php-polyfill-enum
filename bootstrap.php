@@ -15,9 +15,6 @@ if (!class_exists(ReflectionEnumUnitCase::class)) {
 if (!class_exists(ReflectionEnumBackedCase::class)) {
     class_alias(\ryunosuke\polyfill\enum\reflections\ReflectionEnumBackedCase::class, ReflectionEnumBackedCase::class);
 }
-if (!class_exists(ValueError::class)) {
-    class ValueError extends Error { }
-}
 
 if (!function_exists('enum_exists')) {
     function enum_exists(string $enum, bool $autoload = true): bool

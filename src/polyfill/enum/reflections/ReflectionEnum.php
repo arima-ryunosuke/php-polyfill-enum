@@ -10,8 +10,7 @@ use ryunosuke\polyfill\enum\interfaces\UnitEnum;
 
 class ReflectionEnum extends ReflectionClass
 {
-    /** @param object|string $objectOrClass */
-    public function __construct($objectOrClass)
+    public function __construct(object|string $objectOrClass)
     {
         $classname = is_object($objectOrClass) ? get_class($objectOrClass) : $objectOrClass;
         if (!class_exists($classname) || (!is_a($classname, UnitEnum::class, true) && !is_a($classname, \UnitEnum::class, true))) {

@@ -3,16 +3,7 @@ namespace ryunosuke\polyfill\enum\interfaces;
 
 interface BackedEnum extends UnitEnum
 {
-    /**
-     * @param int|string $value
-     * @return static
-     * @throws \ValueError
-     */
-    public static function from($value): self;
+    public static function from(int|string $value): static;
 
-    /**
-     * @param int|string $value
-     * @return ?static
-     */
-    public static function tryFrom($value): ?self;
+    public static function tryFrom(int|string $value): ?static;
 }

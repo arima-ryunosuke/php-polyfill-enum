@@ -9,8 +9,7 @@ class ReflectionEnumUnitCase extends ReflectionClassConstant
 {
     static private $instances = [];
 
-    /** @param object|string $class */
-    public function __construct($class, string $constant)
+    public function __construct(object|string $class, string $constant)
     {
         parent::__construct($class, $constant);
 
@@ -24,9 +23,7 @@ class ReflectionEnumUnitCase extends ReflectionClassConstant
         return new ReflectionEnum($this->class);
     }
 
-    /** @return UnitEnum|\UnitEnum */
-    #[\ReturnTypeWillChange]
-    public function getValue()
+    public function getValue(): UnitEnum|\UnitEnum
     {
         // for uopz or php8.1
         if (($const = $this->getDeclaringClass()->getConstant($this->name)) instanceof \UnitEnum) {

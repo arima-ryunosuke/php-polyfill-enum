@@ -11,7 +11,7 @@ trait Purable
 {
     use Enumable;
 
-    final private function __construct($name)
+    final private function __construct(string $name)
     {
         assert(defined(static::class . "::$name"));
 
@@ -23,8 +23,7 @@ trait Purable
         return array_map(fn($refcase) => $refcase->getValue(), (new ReflectionEnum(static::class))->getCases());
     }
 
-    #[\ReturnTypeWillChange]
-    public function jsonSerialize()
+    public function jsonSerialize(): mixed
     {
         throw new JsonException("Non-backed enums have no default serialization");
     }

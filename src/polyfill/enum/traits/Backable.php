@@ -11,7 +11,7 @@ trait Backable
 {
     use Enumable;
 
-    final private function __construct($name)
+    final private function __construct(string $name)
     {
         assert(defined(static::class . "::$name"));
 
@@ -24,7 +24,7 @@ trait Backable
         return array_map(fn($refcase) => $refcase->getValue(), (new ReflectionEnum(static::class))->getCases());
     }
 
-    final public static function from($value): self
+    final public static function from(int|string $value): static
     {
         $case = static::tryFrom($value);
         if ($case === null) {
@@ -33,7 +33,7 @@ trait Backable
         return $case;
     }
 
-    final public static function tryFrom($value): ?self
+    final public static function tryFrom(int|string $value): ?static
     {
         foreach (static::cases() as $case) {
             if ($case->value === $value) {
@@ -43,8 +43,7 @@ trait Backable
         return null;
     }
 
-    #[\ReturnTypeWillChange]
-    public function jsonSerialize()
+    public function jsonSerialize(): mixed
     {
         return $this->value;
     }
