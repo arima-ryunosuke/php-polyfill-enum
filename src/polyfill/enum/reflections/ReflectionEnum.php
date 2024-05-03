@@ -83,7 +83,7 @@ class ReflectionEnum extends ReflectionClass
         }
 
         // check by attribute
-        $attribute = EnumCase::of($refconst);
+        $attribute = $refconst->getAttributes(EnumCase::class);
         if (isset($attribute[0])) {
             return $attribute[0]->getArguments()[0];
         }
