@@ -44,6 +44,7 @@
       "diff -y -W 180 <(demo/php80-polyfill.php) <(demo/php81-polyfill.php) || true"
     ],
     "test": [
+      "php80 -d zend.assertions=1 vendor/bin/phpunit --configuration=tests/phpunit.xml",
       "php81 -d zend.assertions=1 vendor/bin/phpunit --configuration=tests/phpunit.xml"
     ]
   }
