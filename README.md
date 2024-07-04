@@ -203,6 +203,10 @@ Versioning follows semantic versioning.
 
 - [*change] php>=8.0
 
+### 1.0.2
+
+- [fixbug] trait/interface 読み込み時に多重定義エラーが出る不具合
+
 ### 1.0.1
 
 - [fixbug] オートローダが無限ループする不具合を修正
