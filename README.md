@@ -199,6 +199,10 @@ Versioning follows semantic versioning.
   - minor: add feature (no BC break)
   - patch: fix bug (no BC break)
 
+### 1.1.1
+
+- [merge] 1.0.2
+
 ### 1.1.0
 
 - [*change] php>=8.0
