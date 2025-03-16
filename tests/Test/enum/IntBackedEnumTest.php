@@ -10,6 +10,12 @@ use Size;
 
 class IntBackedEnumTest extends \ryunosuke\Test\AbstractTestCase
 {
+    function test___set_state()
+    {
+        $expr = "return " . var_export(Size::cases(), true) . ";";
+        that(eval($expr))->isSame(Size::cases());
+    }
+
     function test_instanceof()
     {
         that(Size::Small())->isInstanceOf(UnitEnum::class);

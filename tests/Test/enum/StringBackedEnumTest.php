@@ -10,6 +10,12 @@ use ryunosuke\polyfill\enum\interfaces\UnitEnum;
 
 class StringBackedEnumTest extends \ryunosuke\Test\AbstractTestCase
 {
+    function test___set_state()
+    {
+        $expr = "return " . var_export(Level::cases(), true) . ";";
+        that(eval($expr))->isSame(Level::cases());
+    }
+
     function test_instanceof()
     {
         that(Level::Easy())->isInstanceOf(UnitEnum::class);

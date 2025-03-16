@@ -8,6 +8,15 @@ trait Enumable
 {
     use Methodable;
 
+    public static function __set_state(array $state): static
+    {
+        foreach (static::cases() as $case) {
+            if ($case->name === $state['name']) {
+                return $case;
+            }
+        }
+    }
+
     public function __isset(string $name): bool
     {
         // Practically only name and value (because enums cannot have properties)

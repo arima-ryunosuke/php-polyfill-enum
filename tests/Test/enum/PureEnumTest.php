@@ -10,6 +10,12 @@ use Suite;
 
 class PureEnumTest extends \ryunosuke\Test\AbstractTestCase
 {
+    function test___set_state()
+    {
+        $expr = "return " . var_export(Suite::cases(), true) . ";";
+        that(eval($expr))->isSame(Suite::cases());
+    }
+
     function test_constructor()
     {
         that(Suite::class)->new('Hearts')->isInstanceOf(Suite::class);
