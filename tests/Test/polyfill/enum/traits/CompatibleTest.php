@@ -1,5 +1,5 @@
 <?php
-namespace ryunosuke\Test\enum\traits;
+namespace ryunosuke\Test\polyfill\enum\traits;
 
 use HasMagicEnum;
 use NoFinalEnum;

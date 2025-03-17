@@ -5,6 +5,10 @@ use ryunosuke\polyfill\enum\IntBackedEnum;
 use ryunosuke\polyfill\enum\PureEnum;
 use ryunosuke\polyfill\enum\StringBackedEnum;
 use ryunosuke\polyfill\enum\traits\Compatible;
+use ryunosuke\utility\enum\attributes\Label;
+use ryunosuke\utility\enum\traits\Arrayable;
+use ryunosuke\utility\enum\traits\Convertible;
+use ryunosuke\utility\enum\traits\Labelable;
 
 final class Suite extends PureEnum
 {
@@ -44,15 +48,27 @@ final class Level extends StringBackedEnum
 final class UtilityEnum extends StringBackedEnum
 {
     use Compatible;
+    use Arrayable;
+    use Labelable;
+    use Convertible;
 
     protected const DUMMY = 'dummy';
 
     const A = 'a';
+    #[Label("labelB")]
     const B = 'b';
     const C = 'c';
 
     #[EnumCase(false)]
     const Z = 'z';
+
+    public function label(): ?string
+    {
+        return match ($this->value) {
+            self::A => "label" . str_repeat(strtoupper($this->value), 3),
+            default => null,
+        };
+    }
 }
 
 final class OkStringEnum extends StringBackedEnum

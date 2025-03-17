@@ -2,7 +2,7 @@
 /**
  * @noinspection PhpElementIsNotAvailableInCurrentPhpVersionInspection
  */
-namespace ryunosuke\Test\enum;
+namespace ryunosuke\Test\polyfill\enum;
 
 use Level;
 use ryunosuke\polyfill\enum\interfaces\BackedEnum;

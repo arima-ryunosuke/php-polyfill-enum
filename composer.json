@@ -23,7 +23,8 @@
   },
   "autoload": {
     "psr-4": {
-      "ryunosuke\\polyfill\\enum\\": "src/polyfill/enum"
+      "ryunosuke\\polyfill\\enum\\": "src/polyfill/enum",
+      "ryunosuke\\utility\\enum\\": "src/utility/enum"
     },
     "files": [
       "bootstrap.php"

@@ -1,5 +1,5 @@
 <?php
-namespace ryunosuke\Test\enum\concrete;
+namespace ryunosuke\Test\polyfill\enum\concrete;
 
 use ryunosuke\polyfill\enum\IntBackedEnum;
 use ryunosuke\polyfill\enum\traits\Compatible;

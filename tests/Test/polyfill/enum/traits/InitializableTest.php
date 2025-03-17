@@ -1,7 +1,7 @@
 <?php
-namespace ryunosuke\Test\enum\traits;
+namespace ryunosuke\Test\polyfill\enum\traits;
 
-use ryunosuke\Test\enum\concrete\RedefineEnum;
+use ryunosuke\Test\polyfill\enum\concrete\RedefineEnum;
 
 class InitializableTest extends \ryunosuke\Test\AbstractTestCase
 {

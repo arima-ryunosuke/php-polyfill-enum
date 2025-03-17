@@ -1,5 +1,5 @@
 <?php
-namespace ryunosuke\Test\enum\reflections;
+namespace ryunosuke\Test\polyfill\enum\reflections;
 
 use Level;
 use ReflectionException;
