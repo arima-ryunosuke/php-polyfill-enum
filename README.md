@@ -169,6 +169,12 @@ Several traits are defined and can be conveniently used as needed.
 具体的には enum_exists の結果が変わったり、 UnitEnum の instanceof が反応しなくなったりします。
 これは組み込みゆえにどうしようもありません（組み込みの enum_exists にオレオレクラスを反応させることはできないし、UnitEnum の子クラスでもなくなるためです）。
 
+そのための代替として `ryunosuke\ponyfill\enum` 名前空間にどちらにも使える enum_exists,instanceof が用意されています。
+これを使っておけば native でも polyfill でも反応させることができます。
+自分で管理できるコードならこっちを使っておけばよいでしょう。
+ただし、依然として依存ライブラリなどで enum_exists,instanceof されている場合は本当にどうしようもありません。
+uopz や runkit 等で組み込みの enum_exists を書き換えるしくらいしか方法はありません。
+
 demo の中に
 
 - 8.0 で polyfill を使うもの
@@ -189,6 +195,7 @@ demo の中に
     - A. ポリフィルに徹してます。変に便利機能を持たせると移行がしづらくなるためです
         - あくまで enum と似た機能を提供するに留め、いざ 8.1 に移行したときに最小限の変更で済むようにする、がコンセプトです（究極的には定義部だけの変更に留めたい）
         - 確かに __toString とか name => value な配列を返す方法とかがあると便利は便利なんですけどね…
+    - A. …という考えでしたが、世のライブラリが使えないことがあるため、最低限のユーティリティを utility 名前空間で提供しています
 
 ## Release
 
@@ -198,6 +205,12 @@ Versioning follows semantic versioning.
   - major: change specifications (BC break)
   - minor: add feature (no BC break)
   - patch: fix bug (no BC break)
+
+### 1.2.0
+
+- [feature] php8.0/8.1 の両方で使える enum_exists/instanceof を用意
+- [feature] utility を追加
+- [fixbug] ネイティブの enum は var_export/eval でも同じインスタンスが返る
 
 ### 1.1.1
 
