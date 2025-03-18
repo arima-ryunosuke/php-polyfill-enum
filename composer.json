@@ -27,7 +27,9 @@
       "ryunosuke\\utility\\enum\\": "src/utility/enum"
     },
     "files": [
-      "bootstrap.php"
+      "bootstrap.php",
+      "src/polyfill/bootstrap.php",
+      "src/ponyfill/bootstrap.php"
     ]
   },
   "autoload-dev": {

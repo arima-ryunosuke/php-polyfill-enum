@@ -15,5 +15,9 @@
         <include>
             <directory suffix=".php">../src</directory>
         </include>
+        <exclude>
+            <file>../src/polyfill/bootstrap.php</file>
+            <file>../src/ponyfill/bootstrap.php</file>
+        </exclude>
     </coverage>
 </phpunit>

@@ -20,8 +20,10 @@ Level::__autoload();
 
 echo "# enum_exists\n";
 
-var_export(enum_exists(Level::class));    //
-var_export(enum_exists(stdClass::class)); //
+var_export(enum_exists(Level::class));                             //
+var_export(enum_exists(stdClass::class));                          //
+var_export(\ryunosuke\ponyfill\enum_exists(Level::class));    //
+var_export(\ryunosuke\ponyfill\enum_exists(stdClass::class)); //
 
 echo "\n# factory method\n";
 
@@ -42,6 +44,8 @@ echo "\n# instanceof\n";
 
 var_export($normal1 instanceof \UnitEnum);   //
 var_export($normal1 instanceof \BackedEnum); //
+var_export(\ryunosuke\ponyfill\instanceof_UnitEnum($normal1));   //
+var_export(\ryunosuke\ponyfill\instanceof_BackedEnum($normal1)); //
 
 echo "\n# name/value\n";
 
@@ -61,3 +65,5 @@ echo "\n# emulate ReflectionEnumBackCase\n";
 var_export($refcase = $refenum->getCase('Normal')); //
 var_export($refcase->getValue() === $normal1);      //
 var_export($refcase->getBackingValue());            //
+
+echo PHP_EOL;
