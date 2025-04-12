@@ -206,6 +206,10 @@ Versioning follows semantic versioning.
   - minor: add feature (no BC break)
   - patch: fix bug (no BC break)
 
+### 1.2.1
+
+- [fixbug] from/tryFrom は strict type に従う
+
 ### 1.2.0
 
 - [feature] php8.0/8.1 の両方で使える enum_exists/instanceof を用意
