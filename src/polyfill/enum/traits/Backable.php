@@ -1,6 +1,7 @@
 <?php
 namespace ryunosuke\polyfill\enum\traits;
 
+use ryunosuke\polyfill\enum\IntBackedEnum;
 use ryunosuke\polyfill\enum\reflections\ReflectionEnum;
 use ValueError;
 
@@ -35,6 +36,11 @@ trait Backable
 
     final public static function tryFrom(int|string $value): ?static
     {
+        // enum follows strict type, but BackedEnum's typehint is int|string. therefore have to dynamic cast
+        if (is_subclass_of(static::class, IntBackedEnum::class)) {
+            $value = +$value;
+        }
+
         foreach (static::cases() as $case) {
             if ($case->value === $value) {
                 return $case;

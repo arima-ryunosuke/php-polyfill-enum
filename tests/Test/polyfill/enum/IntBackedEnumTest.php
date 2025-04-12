@@ -7,6 +7,7 @@ namespace ryunosuke\Test\polyfill\enum;
 use ryunosuke\polyfill\enum\interfaces\BackedEnum;
 use ryunosuke\polyfill\enum\interfaces\UnitEnum;
 use Size;
+use TypeError;
 
 class IntBackedEnumTest extends \ryunosuke\Test\AbstractTestCase
 {
@@ -59,7 +60,12 @@ class IntBackedEnumTest extends \ryunosuke\Test\AbstractTestCase
         that(Size::from(20))->isSame(Size::Medium());
         that(Size::from(30))->isSame(Size::Large());
 
+        that(Size::from('10'))->isSame(Size::Small());
+        that(Size::from('20'))->isSame(Size::Medium());
+        that(Size::from('30'))->isSame(Size::Large());
+
         that(Size::class)::from(999)->wasThrown('999 is not a valid backing value for enum "Size"');
+        that(Size::class)::from('str')->wasThrown(TypeError::class);
     }
 
     function test_tryFrom()
@@ -67,7 +73,13 @@ class IntBackedEnumTest extends \ryunosuke\Test\AbstractTestCase
         that(Size::tryFrom(10))->isSame(Size::Small());
         that(Size::tryFrom(20))->isSame(Size::Medium());
         that(Size::tryFrom(30))->isSame(Size::Large());
+
+        that(Size::tryFrom('10'))->isSame(Size::Small());
+        that(Size::tryFrom('20'))->isSame(Size::Medium());
+        that(Size::tryFrom('30'))->isSame(Size::Large());
+
         that(Size::tryFrom(999))->isSame(null);
+        that(Size::class)::tryFrom('str')->wasThrown(TypeError::class);
     }
 
     function test_json()
